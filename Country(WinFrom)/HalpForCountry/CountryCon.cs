@@ -39,9 +39,22 @@ namespace Country_WinFrom_.HalpForCountry
 
         private async void Delete(object sender, EventArgs e)
         {
-            MessageBox.Show("Rosdan ham " + _country.Name + "ni o'chirmoqchimisiz", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            string str = await _api.Delete(_country.Id);
-            MessageBox.Show(str);
+            DialogResult res = MessageBox.Show("Delete",
+                "A Question",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+            if(res == DialogResult.Cancel)
+            {
+                new Form1().Close();
+            }
+            else
+            {
+                string str = await _api.Delete(_country.Id);
+                new Form1().Close();
+            }
+             
+            
 
         }
     }

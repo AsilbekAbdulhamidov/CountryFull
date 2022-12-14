@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(
     options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
 builder.Services.AddDbContext<AppDbContext>(p => p.UseNpgsql(builder.Configuration.GetConnectionString("Defaultconnection")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,6 +22,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IServices<Country, CounrtyDto>, CountryServices>();
 builder.Services.AddTransient<IRepostory<Country>, CountryRepostory>();
+
 
 builder.Services.AddTransient<IServices<Region, RegionDto>, RegionServices>();
 builder.Services.AddTransient<IRepostory<Region>, RegionRepostory>();

@@ -35,6 +35,21 @@ namespace ToWinFromFromAPI
             }
         }
 
+        public async Task<Country> Get(int id)
+        {
+            var response = await _client.GetAsync(_url+"/"+id.ToString());  
+            if(response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var res = JsonConvert.DeserializeObject<Country>(json);
+                return res;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<string> Delete(int id)
         {
             var response = await _client.DeleteAsync(_url + "/" + id.ToString());
