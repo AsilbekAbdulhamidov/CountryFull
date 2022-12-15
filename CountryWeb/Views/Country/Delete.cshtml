@@ -1,0 +1,20 @@
+﻿@model CountryEditModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h4>Country</h4>
+<hr />
+
+
+<div class="card-deck">
+    <div class="card-body">
+        <h2>Rosdan ham <b>@Model.Dto.Name</b>  o`chirmoqchimisiz</h2>
+    </div>
+    <div class="card-footer text-center">
+        <a asp-controller="Country" asp-action="DelSave" asp-route-Id="@Model.Id" class="btn btn-primary m-1">OK</a>
+        <a asp-controller="Country" asp-action="index" class="btn btn-danger m-1">Cancel</a>
+    </div>
+</div>

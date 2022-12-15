@@ -11,12 +11,13 @@
     <a class="btn btn-secondary" asp-action="Create">Create New</a>
 </p>
 
+<div class="container-fluid">
 
-<div class="card-deck row d-flex justify-content-between align-items-start w-100 ">
+<div class="row d-flex justify-content-evenly align-items-center w-100 bg-secondary gap-2">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 card m-3 w-25 ">
-            <div class="card-header ">
+        <div class="col-md-4 card bg-info " style="width:31%; margin-top:18px">
+            <div class="card-header">
                 <h3>@item.Name </h3>
             </div>
             <div class="card-body">
@@ -24,11 +25,12 @@
                
             </div>
             
-            <div class="card-footer text-center ">
+            <div class="card-footer text-center d-flex justify-content-evenly align-items-center ">
                 <a asp-controller="Country" asp-action="Show" asp-route-Id="@item.Id" class="btn btn-warning m-1">View</a>
                 <a asp-controller="Country" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-primary m-1">Edit</a>
-                <a class="btn btn-danger m-1">Delete</a>
+                <a asp-action="Delete" asp-controller="Country" asp-route-Id="@item.Id" class="btn btn-danger m-1">Delete</a>
             </div>
         </div>
     }
+</div>
 </div>
